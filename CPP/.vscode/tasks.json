@@ -4,12 +4,12 @@
 		{
 			"type": "cppbuild",
 			"label": "C/C++: g++ 활성 파일 빌드",
-			"command": "/bin/g++",
+			"command": "/usr/bin/g++",
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
-				"-std=c++2a",
 				"${file}",
+				"-std=c++20",
 				"-o",
 				"${fileDirname}/${fileBasenameNoExtension}"
 			],
@@ -20,7 +20,7 @@
 				"$gcc"
 			],
 			"group": "build",
-			"detail": "컴파일러: /bin/g++"
+			"detail": "컴파일러: /usr/bin/g++"
 		}
 	]
 }
