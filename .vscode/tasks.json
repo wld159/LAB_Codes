@@ -9,10 +9,10 @@
 				"-fdiagnostics-color=always",
 				"-g",
 				"${file}",
-				"-std=c++20",
+				"-std=c++2a",
 				"${workspaceFolder}/*.cpp",
 				"-o",
-				"${fileDirname}/rooster"
+				"${fileDirname}/${fileBasenameNoExtension}"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
