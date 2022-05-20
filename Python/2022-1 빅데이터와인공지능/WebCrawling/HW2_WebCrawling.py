@@ -1,5 +1,8 @@
 """
-HW2_WebCrawling.py
+2022-1 Big Data and Artifical Intelligence
+Homework 2
+Student ID: 2241007
+Author: Gyeong Ho Kwon
 
 임의의 프랜차이즈 카페의 매장 정보를 
 웹 크롤링을 통해 추출하고 Excel 파일로 출력하는 프로그램을 작성하시오.
@@ -9,9 +12,7 @@ HW2_WebCrawling.py
 from bs4 import BeautifulSoup
 import urllib.request
 import pandas as pd
-import datetime
-import time
-import platform
+import os
 
 def get_pascucci_store(result):
     """
@@ -20,7 +21,7 @@ def get_pascucci_store(result):
     num_last_page = 53
     for page in range(1, num_last_page + 1):
         pascucci_URL = f"https://www.caffe-pascucci.co.kr/store/storeList.asp?page={page}"
-        print(pascucci_URL)
+        print(f"### {page} of {num_last_page} pages has been crawled ###")
         data = urllib.request.Request(pascucci_URL)
         html = urllib.request.urlopen(pascucci_URL).read()
 
@@ -45,8 +46,10 @@ def main():
     print("### Caffe Pascucci Store WebCrawling Initiated ###")
     get_pascucci_store(result)
     df_pascucci = pd.DataFrame(result, columns=['No.', 'Name', 'Address', 'Time', 'Phone'])
-    df_pascucci.to_csv('pascucci.csv', encoding='cp949', mode='w', index=True)
+    path_pascucci = os.getcwd() + '/Python/2022-1 빅데이터와인공지능/WebCrawling/'
+    df_pascucci.to_csv(path_pascucci + 'pascucci.csv', encoding='cp949', mode='w', index=True)
     del result[:]
+    print("### Caffe Pascucci Store WebCrawling Completed ###")
 
 if __name__ == '__main__':
     main()
